@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import home from './components/Home';
+import navBar from './components/navBar';
+import contactPage from './components/contactPage';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App(props) {
+    return (
+        <div>
+            <Router>
+                <navBar />
+                <Switch>
+                    <Route path="/" render={()=>(<home tasks={props.tasks} />)} />
+                    <Route path="/contact" component={contactPage} />
+                </Switch>
+
+            </Router>
+            
+        </div>
+    )
 }
 
-export default App;
+//Add Router, Switch, Route here for page changes
